@@ -22,4 +22,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
 })->name('dashboard');
+
+    Route::get('/services', function () {
+        return view('services.index');
+    })->name('services.index');
 });
