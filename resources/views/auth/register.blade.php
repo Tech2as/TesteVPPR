@@ -1,9 +1,9 @@
 @extends('layouts.auth')
 
-@section('title', 'Login')
+@section('title', 'Cadastro')
 
 @section('content')
-    <h1>Login</h1>
+    <h1>Cadastro</h1>
 
     @if ($errors->any())
         <div class="errors">
@@ -13,8 +13,11 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('register') }}">
         @csrf
+
+        <label>Nome</label>
+        <input type="text" name="name" value="{{ old('name') }}" required>
 
         <label>Email</label>
         <input type="email" name="email" value="{{ old('email') }}" required>
@@ -22,10 +25,13 @@
         <label>Senha</label>
         <input type="password" name="password" required>
 
-        <button type="submit">Entrar</button>
+        <label>Confirmar Senha</label>
+        <input type="password" name="password_confirmation" required>
+
+        <button type="submit">Criar conta</button>
     </form>
 
-    <a class="link" href="{{ route('register') }}">
-        Não tem conta? <strong>Criar cadastro</strong>
+    <a class="link" href="{{ route('login') }}">
+        Já tem conta? <strong>Entrar</strong>
     </a>
 @endsection

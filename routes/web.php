@@ -8,3 +8,7 @@ Route::get('/', function () {
 });
 
 Route::post('/login', [AuthController::class, 'login'])->name('login');
+
+Route::get('/register', function () {
+    return view('auth/register');
+})->name('register');
