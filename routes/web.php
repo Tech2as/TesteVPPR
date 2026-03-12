@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use Symfony\Component\Routing\Router;
+use App\Http\Controllers\ServiceController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -19,11 +19,9 @@ Route::post('/register', [AuthController::class, 'register'])->name('register.po
 
 // Rotas do dashboard com proteção de autenticação
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-})->name('dashboard');
+    Route::get('/dashboard', [ServiceController::class, 'index'])->name('dashboard'); 
 
-    Route::get('/services', function () {
-        return view('services.index');
-    })->name('services.index');
+    Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
+    Route::delete('/services/{service}', [ServiceController::class, 'destroy'])->name('services.destroy'); 
+    Route::put('/services/{service}', [ServiceController::class, 'update'])->name('services.update');
 });
