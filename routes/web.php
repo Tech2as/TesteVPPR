@@ -24,4 +24,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
     Route::delete('/services/{service}', [ServiceController::class, 'destroy'])->name('services.destroy'); 
     Route::put('/services/{service}', [ServiceController::class, 'update'])->name('services.update');
+   
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
