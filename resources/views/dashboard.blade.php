@@ -14,6 +14,8 @@
                     <th>Nome</th>
                     <th>Valor</th>
                     <th>Descrição</th>
+                    <th>Data de criação</th>
+                    <th>Data de atualização</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -23,6 +25,8 @@
         <td>{{ $service->nome }}</td>
         <td>R$ {{ number_format($service->valor, 2, ',', '.') }}</td>
         <td>{{ $service->descricao ?? '—' }}</td>
+        <td>{{ $service->created_at->format('d/m/Y H:i') }}</td>
+        <td>{{ $service->updated_at->format('d/m/Y H:i') }}</td>
      <td style="display:flex; gap:8px; align-items:center">
     <button class="btn btn-ghost"
         data-id="{{ $service->id }}"
