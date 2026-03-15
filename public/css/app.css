@@ -321,6 +321,64 @@ tr:last-child td { border-bottom: none; }
 
 tbody tr:hover { background: #fafbff; }
 
+.table-wrap {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;  /* ← mantém, mas vamos tirar a paginação de dentro */
+    box-shadow: var(--shadow-sm);
+}
+
+.pagination-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 16px 0;
+    gap: 8px;
+}
+
+.pagination-wrap nav {
+    display: flex;
+    gap: 8px;
+}
+
+.pagination-wrap span,
+.pagination-wrap a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 34px;
+    height: 34px;
+    padding: 0 10px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    background: var(--card);
+    transition: background 0.15s, color 0.15s;
+}
+
+.pagination-wrap a:hover {
+    background: var(--primary-light);
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+/* Página ativa */
+.pagination-wrap [aria-current="page"] span,
+.pagination-wrap span[aria-current="page"] {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+}
+
+/* Desabilitados (anterior/próximo sem página) */
+.pagination-wrap span.cursor-default {
+    opacity: 0.4;
+    pointer-events: none;
+}
 /* ══════════════════════════════════════════
    BOTÕES
 ══════════════════════════════════════════ */

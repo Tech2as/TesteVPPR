@@ -53,7 +53,14 @@
     @endforelse
 </tbody>
         </table>
+    
     </div>
+    
+      @if ($services->hasPages())
+        <div class="pagination-wrap">
+            {{ $services->links('pagination::simple-tailwind') }}
+        </div>
+    @endif
 
     {{-- MODAL --}}
     <div class="modal-overlay {{ $errors->any() ? 'open' : '' }}" id="modalOverlay">
